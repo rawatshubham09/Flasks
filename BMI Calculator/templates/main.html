@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BMI Calculator</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
+
+    </head>
+
+    <body class="main">
+        <h1 style="color: rgb(42, 87, 117);">BMI Calculator</h1>
+        <br>
+        <h3>Fill The Details :</h3><br>
+        <div>
+            <form class="pure-form" method="POST" action="/">
+                Weight(Kg) <br>
+                <input type="text" name="weightvalue"><br>
+                <br>
+                Height(cm) <br>
+                <input type="text" name="heightvalue"><br>
+                <br>
+                <button type="submit" class="button-success pure-button" value="Submit">Calculate</button>
+                <br>
+                <br>
+            </form>
+        </div>
+
+        <div>
+            {% if bmi %}
+            {% if bmi < 18.5 %}
+            <h2 style="color: yellow;">Under Weight !</h2>
+            <h3> BMI is {{ bmi }}</h3>
+            {% elif bmi > 25 %}
+            <h2 style="color: red;">Over Weight</h2>
+            <h3> BMI is {{ bmi }}</h3>
+            {% else %}
+            <h2 style="color: green;">Healthy</h2>
+            <h3> BMI is {{ bmi }}</h3>
+            {% endif %}
+            {% endif %}
+        </div>
+    </body>
+</html>
